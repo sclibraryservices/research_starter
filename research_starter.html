@@ -1,17 +1,11 @@
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet"> 
-
 <style>
-* {
-   font-family: 'Roboto', sans-serif;
-}
-
 .fa-stack {
    display: none;
 }
 
 #kickstart-box {
    padding: 6px 16px;
-   font-size: 15px;
+   font-size: large;
 }
 
 .topic-box,
@@ -20,8 +14,8 @@
 .synonym-box2,
 .synonym-box3,
 .synonym-box4 {
-   line-height: 38px;
-   font-size: 24px;
+   height: 50px;
+   font-size: large;
    margin: 0px 10px 12px 0px;
    padding: 2px 12px;
    width: 600px;
@@ -29,26 +23,27 @@
 
 .next-button {
    display: inline-block;
-   background-color: #00aacc;
+   background-color: #862633;
    color: #fff;
    padding: 11px 12px;
-   font-size: 24px;
+   font-size: large;
    cursor: pointer;
    border: none;
    margin-bottom: 12px;
+   border-radius: 6px;
 }
 
 .next-button:hover {
-   background-color: #00bfe6;
+   background-color: #3D3935;
 }
 
 #refresh-button {
-   background-color: #d9531e;
+   background-color: #3D3935;
    margin-left: 14px;
 }
 
 #refresh-button:hover {
-   background-color: #e36635;
+   background-color: #862633;
 }
 
 .prev-input {
@@ -64,7 +59,7 @@
    margin-top: 18px;
    margin-bottom: 18px;
    display: inline-block;
-   font-size: 24px;
+   font-size: large;
 }
 
 .prev-input i {
@@ -451,34 +446,35 @@ $("#search-submit").click(function(){
 
    // Find out which database has been selected, then build url according to its rules
    switch(selectedDB) {
-      case "asp":
+      case "asc":
          tempSearch.replace(" ", "+");
-         var url = "https://ezproxy.goshen.edu/login?url=http://search.ebscohost.com/login.aspx?direct=true&authtype=ip,uid&bQuery=" + tempSearch + "&db=aph";
+         var url = "https://springfieldcollege.idm.oclc.org/login?url=https://research.ebsco.com/c/a2yrh6/search/results?q=" + tempSearch + "&db=a9h";
+         break;
+	    
+	 case "bth":
+         tempSearch.replace(" ", "+");
+         var url = "https://springfieldcollege.idm.oclc.org/login?url=https://research.ebsco.com/c/a2yrh6/search/results?q=" + tempSearch + "&db=bth";
          break;
 
-      case "cinahl":
+      case "eric":
          tempSearch.replace(" ", "+");
-         var url = "https://ezproxy.goshen.edu/login?url=http://search.ebscohost.com/login.aspx?direct=true&authtype=ip,uid&bQuery=" + tempSearch + "&db=c8h";
+         var url = "https://springfieldcollege.idm.oclc.org/login?url=https://research.ebsco.com/c/a2yrh6/search/results?q=" + tempSearch + "&db=eric";
+         break;
+	    
+	    
+	 case "medline":
+         tempSearch.replace(" ", "+");
+         var url = "https://springfieldcollege.idm.oclc.org/login?url=https://research.ebsco.com/c/a2yrh6/search/results?q=" + tempSearch + "&db=mdc";
          break;
 
       case "psycinfo":
          tempSearch.replace(" ", "+");
-         var url = "https://ezproxy.goshen.edu/login?url=http://search.ebscohost.com/login.aspx?direct=true&authtype=ip,uid&bQuery=" + tempSearch + "&db=psyh";
+         var url = "https://springfieldcollege.idm.oclc.org/login?url=https://research.ebsco.com/c/a2yrh6/search/results?q=" + tempSearch + "&db=psyh";
          break;
 
-      case "socindex":
+      case "sportdiscus":
          tempSearch.replace(" ", "+");
-         var url = "https://ezproxy.goshen.edu/login?url=http://search.ebscohost.com/login.aspx?direct=true&authtype=ip,uid&bQuery=" + tempSearch + "&db=sih";
-         break;
-
-      case "jstor":
-         tempSearch.replace(" ", "+");
-         var url = "https://ezproxy.goshen.edu/login?url=http://www.jstor.org/action/doBasicSearch?Query=" + tempSearch + "&acc=on&wc=on&fc=off&group=none";
-         break;
-
-      case "credo":
-         tempSearch.replace(" ", "%20");
-         var url = "https://ezproxy.goshen.edu/login?url=http://search.credoreference.com/search/all?searchPhrase=" + tempSearch;
+         var url = "https://springfieldcollege.idm.oclc.org/login?url=https://research.ebsco.com/c/a2yrh6/search/results?q=" + tempSearch + "&db=s3h";
          break;
    }
 
@@ -510,7 +506,7 @@ $("#select-database").click(function(){
 </div>
 
 <div id="search-2">
-   <p>Now, <strong>identify 2-4 key concepts within your research topic.</strong> Each concept might be one or two words.</p>
+   <p>Now, <strong>identify 2-3 key concepts within your research topic.</strong> Each concept might be one or two words.</p>
    <p>For example, let's say your research topic is "Does drinking diet soda increase your risk of diabetes?" Your key concepts might be:</p>
    <ul>
       <li>diet soda</li>
@@ -519,10 +515,9 @@ $("#select-database").click(function(){
    </ul>
    <br>
    <p>Your research topic is:</p>
-   <div class="prev-input"><i class="fas fa-quote-left"></i><span id="s1"></span><i class="fas fa-quote-right"></i></div>
+<div class="prev-input"><i class="fa fa-quote-left"></i><span id="s1"></span><i class="fa fa-quote-right"></i></div>
    <br>
    <form id="form-2" onSubmit="return false;">
-   <input type="text" class="facet-box" name="facet" placeholder="Enter key concept...">
    <input type="text" class="facet-box" name="facet" placeholder="Enter key concept...">
    <input type="text" class="facet-box" name="facet" placeholder="Enter key concept...">
    <input type="text" class="facet-box" name="facet" placeholder="Enter key concept...">
@@ -533,7 +528,7 @@ $("#select-database").click(function(){
 
 <div id="search-3">
    <p>Your key concepts are:</p>
-   <div class="prev-input"><i class="fas fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fas fa-quote-right"></i></div>
+   <div class="prev-input"><i class="fa fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fa fa-quote-right"></i></div>
    <br>
    <p>Now, <strong>try to list at least 3 related keywords for each of your key concepts.</strong> These might be broader terms, more specific terms, synonyms, etc.</p>
    <p>For example, let's say you are thinking up related keywords for the concept "diet soda". You might use:</p>
@@ -549,9 +544,6 @@ $("#select-database").click(function(){
    <input type="text" class="synonym-box1" name="synonym1" placeholder="Enter keyword...">
    <input type="text" class="synonym-box1" name="synonym1" placeholder="Enter keyword...">
    <input type="text" class="synonym-box1" name="synonym1" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box1" name="synonym1" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box1" name="synonym1" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box1" name="synonym1" placeholder="Enter keyword...">
    <br>
    <input type="submit" class="next-button" id="butt-3" value="Next" action="#">
    </form>
@@ -559,7 +551,7 @@ $("#select-database").click(function(){
 
 <div id="search-4">
    <p>Your key concepts are:</p>
-   <div class="prev-input"><i class="fas fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fas fa-quote-right"></i></div>
+   <div class="prev-input"><i class="fa fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fa fa-quote-right"></i></div>
    <br>
    <p>Now, <strong>try to list at least 3 related keywords for each of your key concepts.</strong> These might be broader terms, more specific terms, synonyms, etc.</p>
    <p>For example, let's say you are thinking up related keywords for the concept "diet soda". You might use:</p>
@@ -575,9 +567,7 @@ $("#select-database").click(function(){
    <input type="text" class="synonym-box2" name="synonym2" placeholder="Enter keyword...">
    <input type="text" class="synonym-box2" name="synonym2" placeholder="Enter keyword...">
    <input type="text" class="synonym-box2" name="synonym2" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box2" name="synonym2" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box2" name="synonym2" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box2" name="synonym2" placeholder="Enter keyword...">
+
    <br>
    <input type="submit" class="next-button" id="butt-4" value="Next" action="#">
    </form>
@@ -585,7 +575,7 @@ $("#select-database").click(function(){
 
 <div id="search-5">
    <p>Your key concepts are:</p>
-   <div class="prev-input"><i class="fas fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fas fa-quote-right"></i></div>
+   <div class="prev-input"><i class="fa fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fa fa-quote-right"></i></div>
    <br>
    <p>Now, <strong>try to list at least 3 related keywords for each of your key concepts.</strong> These might be broader terms, more specific terms, synonyms, etc.</p>
    <p>For example, let's say you are thinking up related keywords for the concept "diet soda". You might use:</p>
@@ -601,9 +591,6 @@ $("#select-database").click(function(){
    <input type="text" class="synonym-box3" name="synonym3" placeholder="Enter keyword...">
    <input type="text" class="synonym-box3" name="synonym3" placeholder="Enter keyword...">
    <input type="text" class="synonym-box3" name="synonym3" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box3" name="synonym3" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box3" name="synonym3" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box3" name="synonym3" placeholder="Enter keyword...">
    <br>
    <input type="submit" class="next-button" id="butt-5" value="Next" action="#">
    </form>
@@ -611,7 +598,7 @@ $("#select-database").click(function(){
 
 <div id="search-6">
    <p>Your key concepts are:</p>
-   <div class="prev-input"><i class="fas fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fas fa-quote-right"></i></div>
+   <div class="prev-input"><i class="fa fa-quote-left"></i><span id="s2"><ul></ul></span><i class="fa fa-quote-right"></i></div>
    <br>
    <p>Now, <strong>try to list at least 3 related keywords for each of your key concepts.</strong> These might be broader terms, more specific terms, synonyms, etc.</p>
    <p>For example, let's say you are thinking up related keywords for the concept "diet soda". You might use:</p>
@@ -624,9 +611,6 @@ $("#select-database").click(function(){
    <p>And now for your fourth key concept, <span id="facet-4"></span>.</p>
    <br>
    <form id="form-6" onSubmit="return false;">
-   <input type="text" class="synonym-box4" name="synonym4" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box4" name="synonym4" placeholder="Enter keyword...">
-   <input type="text" class="synonym-box4" name="synonym4" placeholder="Enter keyword...">
    <input type="text" class="synonym-box4" name="synonym4" placeholder="Enter keyword...">
    <input type="text" class="synonym-box4" name="synonym4" placeholder="Enter keyword...">
    <input type="text" class="synonym-box4" name="synonym4" placeholder="Enter keyword...">
@@ -649,30 +633,30 @@ $("#select-database").click(function(){
    <p>Here's what that looks like in a format a database can understand.</p>
    <textarea id="search-statement" rows="5" cols="60" readonly></textarea>
    <br><br>
-   <p><strong>Next it's time to select which database to search within!</strong></p>
-   <p>Select one database from the list below, then click "Search!" to perform your search.</p>  
+   <p><strong>Next, it's time to select which database to search within!</strong></p>
+   <p>Select one database from the list below. Then, click "Search!" to perform your search.</p>  
    <br>
-   <input type="radio" name="dbs" class="db-radio" id="radio-1" value="asp" checked />
-   <label for="radio-1">Academic Search Premier</label><br>
+<input type="radio" name="dbs" class="db-radio" id="radio-1" value="asc">
+<label for="radio-1"><b>Academic Search Complete</b></label>: A very large general academic database covering a broad range of topics.<br>
+   
+<input type="radio" name="dbs" class="db-radio" id="radio-2" value="bth">
+<label for="radio-2"><b>Business Source Complete</b></label>: Includes journal articles from all aspects of business plus research reports, industry reports, company profiles, and SWOT analyses.<br>
 
-   <input type="radio" name="dbs" class="db-radio" id="radio-2" value="cinahl" />
-   <label for="radio-2">CINAHL</label><br>
+<input type="radio" name="dbs" class="db-radio" id="radio-4" value="eric">
+   <label for="radio-4"><b>ERIC</b></label>: Covers journal and report literature in disciplines related to education.<br>
+   
+   <input type="radio" name="dbs" class="db-radio" id="radio-3" value="medline">
+<label for="radio-3"><b>MEDLINE</b></label>: One of the best sources for scholarly medical information on a huge range of topics.<br>
 
-   <input type="radio" name="dbs" class="db-radio" id="radio-6" value="credo" />
-   <label for="radio-6">CREDO Reference</label><br>
+<input type="radio" name="dbs" class="db-radio" id="radio-5" value="psycinfo">
+<label for="radio-5"><b>PsycINFO</b></label>: Information on psychology and related disciplines, including journal articles and book chapters.<br>
 
-   <input type="radio" name="dbs" class="db-radio" id="radio-3" value="jstor" />
-   <label for="radio-3">JSTOR</label><br>
-
-   <input type="radio" name="dbs" class="db-radio" id="radio-4" value="psycinfo" />
-   <label for="radio-4">PsycINFO</label><br>
-
-   <input type="radio" name="dbs" class="db-radio" id="radio-5" value="socindex" />
-   <label for="radio-5">SocINDEX</label>
+<input type="radio" name="dbs" class="db-radio" id="radio-6" value="sportdiscus">
+<label for="radio-6"><b>SPORTdiscus</b></label>: Contains information on all aspects of sports, physical education, health, etc.
    <br><br>
 
    <div class="next-button" id="search-submit">Search!</div>
-   <a href="https://libraryguides.goshen.edu/kickstart" target="_self"><div class="next-button" id="refresh-button">Start Over</div>
+   <a href="https://library.springfield.edu/kickstart" target="_self" /><div class="next-button" id="refresh-button">Start Over</div>
 </div>
 
 <div id="search-8">
